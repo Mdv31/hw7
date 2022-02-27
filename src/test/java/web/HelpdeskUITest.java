@@ -11,6 +11,7 @@ import pages.*;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Objects;
 
 public class HelpdeskUITest {
 
@@ -48,9 +49,14 @@ public class HelpdeskUITest {
         LoginPage.login("admin", "adminat");
         // todo: найти созданный тикет и проверить поля
         TicketsPage.openTicket(ticket);
-        Assert.assertEquals(ticket.getSubmitter_email(),TicketPage.getEmail());
+
+        boolean flag= Objects.equals(ticket.getSubmitter_email(), TicketPage.getEmail()) &&
+                Objects.equals(ticket.getTitle(), TicketPage.getTitle())&&
+                Objects.equals(ticket.getDue_date(), TicketPage.getDue_date());
+
+        Assert.assertTrue(flag);
         // Закрываем текущее окно браузера
-        driver.close();
+        //driver.close();
     }
 
     /**
@@ -70,7 +76,7 @@ public class HelpdeskUITest {
     @AfterTest
     public void close() {
         // Закрываем все окна браузера и освобождаем ресурсы
-        driver.quit();
+        //driver.quit();
     }
 
 }

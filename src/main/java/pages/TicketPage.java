@@ -27,9 +27,15 @@ public class TicketPage extends HelpdeskBasePage {
 
     /** Получить адрес почты */
     public static String getEmail() {
-        // Получаем значение адреса почты
-        //return getValue(email);
         return driver.findElement(By.xpath("//*[@id=\"content-wrapper\"]/div/div[1]/div/div/table/tbody/tr[2]/td[2]")).getText();
+    }
+
+    public static String getDue_date() {
+        return driver.findElement(By.xpath("//*[@id=\"content-wrapper\"]/div/div[1]/div/div/table/tbody/tr[1]/td[1]")).getText();
+    }
+
+    public static String getTitle() {
+        return driver.findElement(By.xpath("//*[@id=\"ticket-description\"]/p")).getText();
     }
 
     // todo: остальные методы получения значений полей
