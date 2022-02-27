@@ -52,9 +52,10 @@ public class HelpdeskUITest {
 
         boolean flag= Objects.equals(ticket.getSubmitter_email(), TicketPage.getEmail()) &&
                 Objects.equals(ticket.getTitle(), TicketPage.getTitle())&&
-                Objects.equals(ticket.getDue_date(), TicketPage.getDue_date());
+                TicketPage.getDue_date().contains(ticket.getDue_date());
 
         Assert.assertTrue(flag);
+
         // Закрываем текущее окно браузера
         //driver.close();
     }

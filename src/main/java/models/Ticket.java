@@ -14,7 +14,7 @@ public class Ticket {
     int queue = 1;
     int status = 1;
 
-    String due_date = "Feb. 25, 2022, midnight (2 days, 16 hours ago)";
+    String due_date = "Feb. 25, 2022";
     String assigned_to ="admin";
     String created = "2022-01-27T08:26:11.689025";
     String modified = "2022-01-27T08:26:11.689025";
