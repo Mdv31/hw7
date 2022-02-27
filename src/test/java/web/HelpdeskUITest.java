@@ -76,7 +76,7 @@ public class HelpdeskUITest {
     @AfterTest
     public void close() {
         // Закрываем все окна браузера и освобождаем ресурсы
-        //driver.quit();
+        driver.quit();
     }
 
 }
