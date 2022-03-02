@@ -20,7 +20,7 @@ public class TicketsPage extends HelpdeskBasePage {
     }
 
     /** Ищем строку с тикетом и нажимаем на нее */
-    public static void openTicket(Ticket ticket) throws InterruptedException {
+    public static void openTicket(Ticket ticket) {
         // todo: найти и открыть тикет
         ticketsSearchQuery.sendKeys(ticket.getTitle());
         ticketsGoBtn.click();
