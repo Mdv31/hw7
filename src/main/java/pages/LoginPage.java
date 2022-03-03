@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -22,10 +23,12 @@ public class LoginPage extends HelpdeskBasePage {
      * @param user     логин пользователя
      * @param password пароль пользователя
      */
+    @Step("Заполнение формы логина")
     public static void login(String user, String password) {
         // todo: заполнить поля и нажать кнопку авторизации
         loginUsername.sendKeys(user);
         loginPassword.sendKeys(password);
+        takeScreenshotByAllure(driver);
         loginBtn.click();
     }
 

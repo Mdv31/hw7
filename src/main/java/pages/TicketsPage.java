@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import models.Ticket;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -20,6 +21,7 @@ public class TicketsPage extends HelpdeskBasePage {
     }
 
     /** Ищем строку с тикетом и нажимаем на нее */
+    @Step("Ищем строку с тикетом и нажимаем на нее")
     public static void openTicket(Ticket ticket) {
         // todo: найти и открыть тикет
         ticketsSearchQuery.sendKeys(ticket.getTitle());
@@ -29,6 +31,7 @@ public class TicketsPage extends HelpdeskBasePage {
         ticketSearchQuerySort.click();
         WebElement ticketSearchQuery = driver.findElement(By.xpath("//*[@id=\"ticketTable\"]/tbody/tr[1]/td[2]/div/a"));
         ticketSearchQuery.click();
+        takeScreenshotByAllure(driver);
     }
 
 }

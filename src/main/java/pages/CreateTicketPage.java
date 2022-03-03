@@ -1,9 +1,9 @@
 package pages;
 
+import io.qameta.allure.Step;
 import models.Ticket;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
@@ -33,6 +33,7 @@ public class CreateTicketPage extends HelpdeskBasePage {
     }
 
     /** Создание тикета */
+    @Step ("Заполнение тикета ")
     public static void createTicket(Ticket ticket) {
         //setProblemTitle(ticket.getTitle());
         // todo: заполнение остальных полей
@@ -42,7 +43,7 @@ public class CreateTicketPage extends HelpdeskBasePage {
         selectTicketPriority.selectByIndex(ticket.getPriority());
         ticketDueDate.sendKeys(ticket.getDue_date());
         ticketSubEmail.sendKeys(ticket.getSubmitter_email());
-
+        takeScreenshotByAllure(driver);
         createTicket();
     }
 
@@ -55,8 +56,10 @@ public class CreateTicketPage extends HelpdeskBasePage {
     // todo: методы заполнения остальных полей
 
     /** Зажатие кнопки "Submit Ticket" */
+    @Step ("Отправка тикета")
     public static void createTicket() {
         // todo: нажать кнопку создания задания
+        takeScreenshotByAllure(driver);
         ticketBtn.click();
     }
 

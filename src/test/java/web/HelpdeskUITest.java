@@ -2,6 +2,7 @@ package web;
 
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
 import models.Ticket;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -41,12 +42,14 @@ public class HelpdeskUITest {
         AbstractPage.setDriver(driver);
     }
 
+
     public void takeScreenshotByAllure(WebDriver driver){
         byte[] screenshotAs = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
         Allure.addAttachment("Скриншот", new ByteArrayInputStream(screenshotAs));
     }
 
     @Test
+    @Step ("Открыта главная страница")
     public void createTicketTest() throws InterruptedException {
         // Заполняем объект класс Ticket необходимыми тестовыми данными
         ticket = buildNewTicket();
@@ -56,15 +59,15 @@ public class HelpdeskUITest {
         // todo: создать объект главной страницы и выполнить шаги по созданию тикета
         MainPage.newTicket();
         CreateTicketPage.createTicket(ticket);
-        takeScreenshotByAllure(driver);
+
         //TimeUnit.SECONDS.sleep(30);
         // todo: перейти к странице авторизации и выполнить вход
         driver.get("https://at-sandbox.workbench.lanit.ru/login/");
         LoginPage.login("admin", "adminat");
-        takeScreenshotByAllure(driver);
+
         // todo: найти созданный тикет и проверить поля
         TicketsPage.openTicket(ticket);
-        takeScreenshotByAllure(driver);
+
 
         boolean flag= Objects.equals(ticket.getSubmitter_email(), TicketPage.getEmail()) &&
                 Objects.equals(ticket.getTitle(), TicketPage.getTitle());
