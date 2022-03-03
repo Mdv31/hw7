@@ -1,11 +1,5 @@
 package web;
-
-import io.qameta.allure.Allure;
-import io.qameta.allure.Attachment;
-import io.qameta.allure.Step;
 import models.Ticket;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -13,14 +7,9 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.*;
-import ru.yandex.qatools.ashot.AShot;
-import ru.yandex.qatools.ashot.Screenshot;
-
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 public class HelpdeskUITest {
 
@@ -43,19 +32,18 @@ public class HelpdeskUITest {
     }
 
 
-    public void takeScreenshotByAllure(WebDriver driver){
+    /*public void takeScreenshotByAllure(WebDriver driver){
         byte[] screenshotAs = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
         Allure.addAttachment("Скриншот", new ByteArrayInputStream(screenshotAs));
-    }
+    }*/
 
     @Test
-    @Step ("Открыта главная страница")
-    public void createTicketTest() throws InterruptedException {
+    public void createTicketTest(){
         // Заполняем объект класс Ticket необходимыми тестовыми данными
         ticket = buildNewTicket();
         // todo: открыть главную страницу
         driver.get("https://at-sandbox.workbench.lanit.ru/");
-        takeScreenshotByAllure(driver);
+        //takeScreenshotByAllure(driver);
         // todo: создать объект главной страницы и выполнить шаги по созданию тикета
         MainPage.newTicket();
         CreateTicketPage.createTicket(ticket);

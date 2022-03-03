@@ -56,10 +56,9 @@ public class CreateTicketPage extends HelpdeskBasePage {
     // todo: методы заполнения остальных полей
 
     /** Зажатие кнопки "Submit Ticket" */
-    @Step ("Отправка тикета")
+
     public static void createTicket() {
         // todo: нажать кнопку создания задания
-        takeScreenshotByAllure(driver);
         ticketBtn.click();
     }
 
